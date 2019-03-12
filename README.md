@@ -8,7 +8,7 @@ A PDFBox wrapper in Clojure for extracting text from PDF
 ```edn
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
         veer66/pdf-to-text {:git/url "https://github.com/veer66/pdf-to-text"
-                            :sha "92b70ab49efa8c28d8bfb4d93532b8b18c822c47"}}}
+                            :sha "2ddad6936d7820ad82e877fa7fd6ec891f0412e3"}}}
 ```
 
 ### ext-pdf.clj
