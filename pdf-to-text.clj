@@ -1,5 +1,3 @@
-;; https://radixcode.com/pdfbox-example-code-how-to-extract-text-from-pdf-file-with-java
-
 (ns pdf-to-text
   (:import org.apache.pdfbox.io.RandomAccessFile
            org.apache.pdfbox.pdfparser.PDFParser
@@ -19,3 +17,6 @@
         (.setStartPage 0)
         (.setStartPage (.getNumberOfPages pd-doc)))
       (.getText text-stripper pd-doc))))
+
+;; Tutorial for Java
+;; https://radixcode.com/pdfbox-example-code-how-to-extract-text-from-pdf-file-with-java
