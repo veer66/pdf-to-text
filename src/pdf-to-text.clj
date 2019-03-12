@@ -2,8 +2,7 @@
   (:import org.apache.pdfbox.io.RandomAccessFile
            org.apache.pdfbox.pdfparser.PDFParser
            org.apache.pdfbox.pdmodel.PDDocument
-           org.apache.pdfbox.text.PDFTextStripper)
-  (:gen-class))
+           org.apache.pdfbox.text.PDFTextStripper))
 
 (defn pdf-to-text
   [f]
@@ -20,3 +19,6 @@
 
 ;; Tutorial for Java
 ;; https://radixcode.com/pdfbox-example-code-how-to-extract-text-from-pdf-file-with-java
+
+(defn -main []
+  (println "MAIN"))
