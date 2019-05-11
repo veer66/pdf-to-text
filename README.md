@@ -1,7 +1,7 @@
 # pdf-to-text
 A PDFBox wrapper in Clojure for extracting text from PDF
 
-## Example
+## Usage as a library
 
 ### deps.edn
 
@@ -21,10 +21,10 @@ A PDFBox wrapper in Clojure for extracting text from PDF
     println)
 ```
 
-### Run
+## Usage as a command line interface
 
-```sh
-clj ext-pdf.clj
+```
+clj -m pdf-to-text <pdf file>
 ```
 
 ## Reference
