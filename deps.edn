@@ -1,2 +1,2 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
-        org.apache.pdfbox/pdfbox {:mvn/version "2.0.14"}}}
+        org.apache.pdfbox/pdfbox {:mvn/version "2.0.15"}}}

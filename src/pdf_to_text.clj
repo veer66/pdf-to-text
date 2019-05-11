@@ -1,8 +1,16 @@
 (ns pdf-to-text
+  (:require [clojure.string :refer [join]])
   (:import org.apache.pdfbox.io.RandomAccessFile
            org.apache.pdfbox.pdfparser.PDFParser
            org.apache.pdfbox.pdmodel.PDDocument
-           org.apache.pdfbox.text.PDFTextStripper))
+           org.apache.pdfbox.text.PDFTextStripper)
+  (:gen-class))
+
+(defn extract-from-page [pd-doc text-stripper page]
+  (doto text-stripper
+    (.setStartPage page)
+    (.setEndPage page))
+  (.getText text-stripper pd-doc))
 
 (defn pdf-to-text
   [f]
@@ -12,11 +20,13 @@
       (with-open [cos-doc (.getDocument parser)
                   pd-doc (PDDocument. cos-doc)]
         (.parse parser)
-        (doto text-stripper
-          (.setStartPage 0)
-          (.setStartPage (.getNumberOfPages pd-doc)))
-        (.getText text-stripper pd-doc)))))
+        (let [pages (range (.getNumberOfPages pd-doc))
+              texts (map #(extract-from-page pd-doc text-stripper (inc %)) pages)]
+          (join "\t" texts))))))
 
-;; Tutorial for Java
-;; https://radixcode.com/pdfbox-example-code-how-to-extract-text-from-pdf-file-with-java
-
+(defn -main [& args]
+  (if (not= 1 (count args))
+    (do
+      (println "Usage: clj -m pdf-to-text <pdf file>")
+      (System/exit 1))
+    (println (pdf-to-text (clojure.java.io/as-file (first args))))))
